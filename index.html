@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>欧冠抽签 · 比分预测 | 2026-27 UEFA Champions League</title>
+  <meta name="description" content="2026-27 赛季欧冠 36 支正赛球队随机抽签对阵，基于球队实力与球员水平模拟完整赛况时间线（进球、红黄牌、换人、乌龙、VAR 取消、终场哨）。">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="hero">
+    <div class="hero-badge">2026/27 赛季 · 瑞士轮改制第四季</div>
+    <h1>🏆 欧冠抽签 · 比分预测</h1>
+    <p>36 支正赛球队任你挑选 · 随机抽签 · 智能模拟完整赛况</p>
+    <div class="pitch-line"></div>
+  </header>
+
+  <main>
+
+    <!-- ================= 对阵选择 ================= -->
+    <section class="panel" id="selectPanel">
+      <h2 class="panel-title">⚔️ 对阵选择</h2>
+
+      <div class="versus-row">
+        <button class="team-slot" id="homeSlot" title="点击选择主队">
+          <span class="slot-flag" id="homeFlag">🎯</span>
+          <span class="slot-name" id="homeName">选择主队</span>
+          <span class="slot-country" id="homeCountry"></span>
+          <span class="slot-strength hidden" id="homeStrength"></span>
+          <span class="slot-hint" id="homeHint">点击选择球队</span>
+        </button>
+
+        <div class="versus-center">
+          <span class="vs">VS</span>
+          <button class="btn btn-draw" id="drawBtn">🎲 随机抽签</button>
+          <button class="btn btn-swap" id="swapBtn" title="交换主客队">⇄</button>
+        </div>
+
+        <button class="team-slot" id="awaySlot" title="点击选择客队">
+          <span class="slot-flag" id="awayFlag">🎯</span>
+          <span class="slot-name" id="awayName">选择客队</span>
+          <span class="slot-country" id="awayCountry"></span>
+          <span class="slot-strength hidden" id="awayStrength"></span>
+          <span class="slot-hint" id="awayHint">点击选择球队</span>
+        </button>
+      </div>
+
+      <div class="action-row">
+        <button class="btn btn-primary" id="predictBtn" disabled>⚽ 开始模拟比赛</button>
+      </div>
+
+      <div class="odds-preview hidden" id="oddsPreview">
+        <div class="odds-bar">
+          <div class="odds-home" id="oddsHomeBar">主胜</div>
+          <div class="odds-draw" id="oddsDrawBar">平局</div>
+          <div class="odds-away" id="oddsAwayBar">客胜</div>
+        </div>
+        <div class="odds-labels">
+          <span id="oddsHomeLabel">主胜 0%</span>
+          <span id="oddsDrawLabel">平局 0%</span>
+          <span id="oddsAwayLabel">客胜 0%</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= 比赛结果 ================= -->
+    <section class="panel result-panel hidden" id="resultPanel">
+      <div class="scoreboard">
+        <div class="sb-team sb-home">
+          <span class="sb-flag" id="sbHomeFlag"></span>
+          <span class="sb-name" id="sbHomeName"></span>
+          <span class="sb-country" id="sbHomeCountry"></span>
+        </div>
+        <div class="sb-score">
+          <span id="scoreHome">0</span><span class="colon">-</span><span id="scoreAway">0</span>
+        </div>
+        <div class="sb-team sb-away">
+          <span class="sb-flag" id="sbAwayFlag"></span>
+          <span class="sb-name" id="sbAwayName"></span>
+          <span class="sb-country" id="sbAwayCountry"></span>
+        </div>
+      </div>
+
+      <div class="sb-meta">
+        <span id="sbStadium">🏟 主场球场</span>
+        <span id="sbStatus"> · 全场结束</span>
+      </div>
+      <div class="sb-meta" id="sbMvpWrap"></div>
+
+      <div class="lineups-wrap" id="lineupsWrap"></div>
+
+        <div class="stats-grid" id="statsGrid"></div>
+
+      <div class="timeline-wrap">
+        <h3>📋 赛况时间轴</h3>
+        <div class="timeline" id="timeline"></div>
+      </div>
+
+      <div class="result-actions">
+        <button class="btn btn-primary" id="replayBtn">🔁 重新模拟</button>
+        <button class="btn" id="playBtn">▶ 播放赛况</button>
+        <button class="btn" id="backBtn">← 更换球队</button>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= 选队弹窗 ================= -->
+  <div class="modal hidden" id="pickerModal">
+    <div class="modal-box">
+      <div class="modal-head">
+        <h3 id="pickerTitle">选择球队</h3>
+        <input type="text" id="pickerSearch" placeholder="🔍 搜索球队（支持中文 / 英文）">
+        <button class="modal-close" id="pickerClose" title="关闭">✕</button>
+      </div>
+      <div class="modal-body" id="pickerGrid"></div>
+    </div>
+  </div>
+
+  <footer>
+    数据说明：球队与球员信息基于 2026 年夏季转会窗后的公开资料整理；比赛过程由
+    <strong>实力模型 + 泊松分布随机模拟</strong>生成，仅供娱乐，不代表真实比赛结果。<br>
+    红黄牌、进球、进球取消（VAR）、换人、乌龙球与终场哨等事件均为模拟生成。
+  </footer>
+
+  <script src="js/teams_full.js"></script>
+  <script src="js/simulation.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
