@@ -97,9 +97,3 @@ Football Prediction/
 - [TNT Sports: Champions League play-offs recap](https://www.tntsports.co.uk/football/champions-league/2026-2027/uefa-champions-league-play-offs-live-fenerbahce-host-lyon-dinamo-zagreb-face-viking-fk-and-aek-athens-visit-bulgarian-side-levski_lci50028661/liveevent.shtml)
 - [beIN Sports: pots for the 2026/27 draw](https://prod.beinsports.com/en-us/soccer/uefa-champions-league/articles/what-are-the-pots-for-the-2026-27-uefa-champions-league-draw-2026-08-25)
 
-## ⚠️ 免责声明
-
-比赛过程与比分全部由随机模拟生成，**仅供娱乐**，不代表任何真实比赛结果或博彩建议。球员信息尽力核对至 2026 年 8 月底，如有出入欢迎指正。
-=======
-# Football_Prediction
->>>>>>> 84760d45d5aae896779e0b954c8f7cc7bd75885d
